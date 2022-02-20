@@ -1,4 +1,6 @@
 import os
+if os.geteuid() != 0:
+    exit("You need to have root privileges to run this script.\nPlease try again with 'sudo'. Exiting.")
 import click
 import coloredlogs, logging
 
