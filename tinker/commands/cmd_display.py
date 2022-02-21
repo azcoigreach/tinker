@@ -1,5 +1,6 @@
 import click
 from tinker.cli import pass_environment
+# import tinker.cli.functions
 import digitalio
 import board
 from adafruit_rgb_display.rgb import color565
@@ -38,8 +39,8 @@ def cli(ctx):
     ctx.backlight.value = True
     ctx.buttonA = digitalio.DigitalInOut(board.D23)
     ctx.buttonB = digitalio.DigitalInOut(board.D24)
-    ctx.buttonA.switch_to_input()
-    ctx.buttonB.switch_to_input()
+    ctx.buttonA.switch_to_input(digitalio.Pull.UP)
+    ctx.buttonB.switch_to_input(digitalio.Pull.UP)
 
 @cli.command("test", short_help="Test Display")
 @pass_environment
@@ -130,22 +131,40 @@ def stats(ctx):
 @pass_environment
 def test(ctx):
     '''Test firing command with a button'''
-    # Main loop:
-    def cmd_sub():
-        cmd = "/usr/bin/python3 /usr/local/bin/tinker display stats"
-        Temp = subprocess.check_output(cmd, shell=True).decode("utf-8")
+    
+    # def cmd_sub():
+    #     cmd = "/usr/bin/python3 /usr/local/bin/tinker display stats"
+    #     Temp = subprocess.check_output(cmd, shell=True).decode("utf-8")
         
 
     result = True
     running = False
+    prev_state = ctx.buttonB.value
     while result is not False:
-        #if button.value: # Uncomment for NeoKey Trinkey
-        if ctx.buttonB.value and not ctx.buttonA.value:
-            running = not running
-            if running:
-                ctx.vlog("running command")
+        cur_state = ctx.buttonB.value
+        if cur_state != prev_state:
+            if not cur_state:
+                run_once = 0
+                while 1:
+                    if run_once == 0:
+                        print("BTN is down")
+                        run_once = 1
             else:
-                ctx.vlog("not running")
-            time.sleep(0.2)
-        if running:
-            result = cmd_sub()
+                print("BTN is up")
+        # if ctx.buttonB.value and not ctx.buttonA.value:
+        #     running = not running
+        #     if running:
+        #         ctx.log("running command")
+        #     else:
+        #         ctx.log("not running")
+        #     time.sleep(0.2)
+        
+        # if running:
+        #     while running is not False:
+        #         result = ctx.log(click.style('cmd fired', fg='red'))
+        #         running = not running
+
+@cli.command("menus", short_help="Menu template")
+@pass_environment
+def test(ctx):
+    '''Menu test and templates'''

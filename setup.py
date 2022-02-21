@@ -7,14 +7,14 @@ setup(
     version="0.1",
     author="AZcoigreach",
     author_email="azcoigreach@gmail.com",
-    packages=["tinker", "tinker.commands", "tinker.commands.configs"],
+    packages=["tinker", "tinker.commands", "tinker.configs"],
     include_package_data=True,
     install_requires=[
         "click",
         "coloredlogs",
-        "colorama",
         "pymongo",
         "adafruit-circuitpython-rgb-display",
+        "adafruit-circuitpython-debouncer",
         ],
     entry_points="""
         [console_scripts]
