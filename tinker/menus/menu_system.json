@@ -1,0 +1,15 @@
+{
+    "menu_system": [
+        {
+            "index": 0,
+            "name": "Menu 1",
+            "menu_position": "1",
+            "default_color": "white",
+            "selected_color": "red",
+            "function": {
+                "type": "sub_menu",
+                "args": ["1_1"]
+            }
+        }
+    ]
+}

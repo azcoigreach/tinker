@@ -3,6 +3,7 @@ if os.geteuid() != 0:
     exit("You need to have root privileges to run this script.\nPlease try again with 'sudo'. Exiting.")
 import click
 import coloredlogs, logging
+import json
 
 CONTEXT_SETTINGS = dict(auto_envvar_prefix="TINKER")
 
@@ -28,6 +29,7 @@ class Environment:
 
 pass_environment = click.make_pass_decorator(Environment, ensure=True)
 cmd_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), "commands"))
+menus_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), "menus"))
 
 
 class TinkerCLI(click.MultiCommand):
@@ -46,6 +48,11 @@ class TinkerCLI(click.MultiCommand):
             return
         return mod.cli
 
+def get_menu_items():
+    menus_file = os.path.join(menus_folder, 'menu_system.json')
+    with open(menus_file) as f:
+            data = json.load(f)
+    return data['menu_system']
 
 @click.command(cls=TinkerCLI, context_settings=CONTEXT_SETTINGS)
 @click.option(
