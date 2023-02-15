@@ -1,0 +1,13 @@
+{
+    "menu_items": [
+        {
+            "name": "Menu 1",
+            "menu_id": "1",
+            "default_color": "white",
+            "selected_color": "red",
+            "function": {
+                "name": "sub_menu",
+                "args": ["1_1"]
+            },
+        },
+}

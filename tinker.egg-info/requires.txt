@@ -1,0 +1,6 @@
+adafruit-circuitpython-debouncer
+adafruit-circuitpython-rgb-display
+click
+coloredlogs
+numpy
+pymongo

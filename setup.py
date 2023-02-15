@@ -15,6 +15,9 @@ setup(
         "pymongo",
         "adafruit-circuitpython-rgb-display",
         "adafruit-circuitpython-debouncer",
+        "numpy",
+        "psutil",
+        "ifaddr",
         ],
     entry_points="""
         [console_scripts]

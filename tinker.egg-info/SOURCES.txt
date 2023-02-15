@@ -1,0 +1,16 @@
+README.md
+setup.py
+tinker/__init__.py
+tinker/cli.py
+tinker.egg-info/PKG-INFO
+tinker.egg-info/SOURCES.txt
+tinker.egg-info/dependency_links.txt
+tinker.egg-info/entry_points.txt
+tinker.egg-info/requires.txt
+tinker.egg-info/top_level.txt
+tinker/commands/__init__.py
+tinker/commands/cmd_display.py
+tinker/commands/cmd_game_of_life.py
+tinker/commands/cmd_test.py
+tinker/configs/__init__.py
+tinker/configs/mongodb.py
