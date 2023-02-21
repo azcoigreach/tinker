@@ -15,7 +15,7 @@ from PIL import Image, ImageDraw, ImageFont
 CONTEXT_SETTINGS = dict(auto_envvar_prefix="TINKER")
 
 logger = logging.getLogger(__name__)
-coloredlogs.install(level='DEBUG')
+coloredlogs.install(level='INFO', logger=logger)
 
 # Configuration for CS and DC pins for Raspberry Pi
 cs_pin = digitalio.DigitalInOut(board.CE0)
@@ -81,6 +81,7 @@ class Environment:
 pass_environment = click.make_pass_decorator(Environment, ensure=True)
 cmd_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), "commands"))
 font_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), "fonts"))
+json_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), "json"))
 
 
 class TinkerCLI(click.MultiCommand):
@@ -113,3 +114,4 @@ async def cli(ctx, verbose):
     ctx.font_folder = font_folder
     # Default font
     ctx.default_font = ImageFont.truetype(os.path.join(font_folder, "retro_gaming.ttf"), 20)
+    ctx.json_folder = json_folder
