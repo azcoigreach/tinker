@@ -18,6 +18,11 @@ setup(
         "numpy",
         "psutil",
         "ifaddr",
+        "speedtest-cli",
+        "asyncclick",
+        "Pillow",
+        "anyio",
+        "RPI.GPIO",
         ],
     entry_points="""
         [console_scripts]

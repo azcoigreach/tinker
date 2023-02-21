@@ -1,0 +1,48 @@
+{
+    "Main Menu": [
+      {
+        "name": "Command 1",
+        "command": "cmd_1",
+        "color": "green"
+      },
+      {
+        "name": "Submenu 1",
+        "color": "blue",
+        "submenu": [
+          {
+            "name": "Command 2",
+            "command": "cmd_2",
+            "color": "red"
+          },
+          {
+            "name": "Command 3",
+            "command": "cmd_3",
+            "color": "yellow"
+          }
+        ]
+      },
+      {
+        "name": "Submenu 2",
+        "color": "magenta",
+        "submenu": [
+          {
+            "name": "Sub-Submenu 1",
+            "color": "cyan",
+            "submenu": [
+              {
+                "name": "Command 4",
+                "command": "cmd_4",
+                "color": "purple"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Command 5",
+        "command": "cmd_5",
+        "color": "orange"
+      }
+    ]
+  }
+  

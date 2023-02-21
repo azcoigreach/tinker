@@ -2,7 +2,8 @@ import os
 if os.geteuid() != 0:
     exit("You need to have root privileges to run this script.\nPlease try again with 'sudo'. Exiting.")
 
-import click
+import asyncclick as click
+# import click
 import coloredlogs, logging
 
 import digitalio
@@ -66,6 +67,14 @@ class Environment:
         # Display the image on the screen
         self.display.image(image)
 
+    def load_menus(self):
+        """Loads the menus from the configs folder."""
+        menus = []
+        for filename in os.path.abspath(os.path.join(os.path.dirname(__file__), "configs")):
+            if filename.endswith(".json"):
+                menus.append(filename[:-5])
+        return menus
+
     
 
 
@@ -94,7 +103,7 @@ class TinkerCLI(click.MultiCommand):
 @click.command(cls=TinkerCLI, context_settings=CONTEXT_SETTINGS)
 @click.option("-v", "--verbose", is_flag=True, help="Enables verbose mode.")
 @pass_environment
-def cli(ctx, verbose):
+async def cli(ctx, verbose):
     """Tinker Server command line interface."""
     ctx.verbose = verbose
     ctx.display = display

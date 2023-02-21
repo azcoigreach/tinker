@@ -1,13 +1,15 @@
 import os
 import time
-import click
+import asyncio
+import asyncclick as click
 from tinker.cli import pass_environment
 
 from PIL import Image, ImageDraw, ImageFont
 
+
 @click.command()
 @pass_environment
-def cli(env):
+async def cli(env):
     # Set the display rotation
     env.display.rotation = 270
     if env.display.rotation % 180 == 90:
@@ -52,4 +54,4 @@ def cli(env):
             break
 
         # Sleep for a short time to limit the update rate
-        time.sleep(0.1)
+        await asyncio.sleep(0.5)
