@@ -46,7 +46,7 @@ class Environment:
     def __init__(self):
         self.verbose = False
         self.home = os.getcwd()
-
+        
     def log(self, msg, *args):
         """Logs a message to stderr."""
         if args:

@@ -23,7 +23,8 @@ setup(
         "Pillow",
         "anyio",
         "RPI.GPIO",
-        "openai",
+        "aiohttp",
+        "aiofiles",
         ],
     entry_points="""
         [console_scripts]
