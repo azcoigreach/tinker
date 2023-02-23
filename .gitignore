@@ -11,7 +11,7 @@
 *.sln.docstates
 *.vscode
 conversation.json
-chatgpt.py
+json/
 .env
 
 # User-specific files (MonoDevelop/Xamarin Studio)
